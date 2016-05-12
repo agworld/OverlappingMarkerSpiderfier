@@ -192,7 +192,7 @@ class @['OverlappingMarkerSpiderfier']
         @spiderfy(nearbyMarkerData, nonNearbyMarkers)
 
   p['markersNearMarker'] = (marker, firstOnly = no) ->
-    unless @projection?
+    unless @map.getProjection()?
       throw "Must wait for 'idle' event on map before calling markersNearMarker"
     nDist = @['nearbyDistance']
     pxSq = nDist * nDist
@@ -207,7 +207,7 @@ class @['OverlappingMarkerSpiderfier']
     markers
 
   p['markersNearAnyOtherMarker'] = ->  # *very* much quicker than calling markersNearMarker in a loop
-    unless @map.projection?
+    unless @map.getProjection()?
       throw "Must wait for 'idle' event on map before calling markersNearAnyOtherMarker"
     nDist = @['nearbyDistance']
     pxSq = nDist * nDist
